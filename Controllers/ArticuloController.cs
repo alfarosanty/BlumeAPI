@@ -21,11 +21,18 @@ public class ArticuloController : ControllerBase
     [HttpGet(Name = "GetArticulos")]
     public IEnumerable<Articulo> Get()
     {
-        CConexion con =  new CConexion();
-        Npgsql.NpgsqlConnection npgsqlConnection = con.establecerConexion();
-        List<Articulo> articulos = new ArticuloServices().listarArticulos(npgsqlConnection);
-        con.cerrarConexion(npgsqlConnection);
-        return articulos;
+        try{
+            CConexion con =  new CConexion();
+            Npgsql.NpgsqlConnection npgsqlConnection = con.establecerConexion();
+            List<Articulo> articulos = new ArticuloServices().listarArticulos(npgsqlConnection);
+            con.cerrarConexion(npgsqlConnection);
+            return articulos;
+        }
+        catch(Exception ex)
+        {
+            return null;
+        }
+
     }
 
 }
