@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\github\\Blume\\BlumeAPI\\BlumeAPI.csproj": {}
+    "C:\\Git\\Blume\\BlumeAPI\\BlumeAPI.csproj": {}
   },
   "projects": {
-    "C:\\github\\Blume\\BlumeAPI\\BlumeAPI.csproj": {
+    "C:\\Git\\Blume\\BlumeAPI\\BlumeAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\github\\Blume\\BlumeAPI\\BlumeAPI.csproj",
+        "projectUniqueName": "C:\\Git\\Blume\\BlumeAPI\\BlumeAPI.csproj",
         "projectName": "BlumeAPI",
-        "projectPath": "C:\\github\\Blume\\BlumeAPI\\BlumeAPI.csproj",
-        "packagesPath": "C:\\Users\\ar30886127\\.nuget\\packages\\",
-        "outputPath": "C:\\github\\Blume\\BlumeAPI\\obj\\",
+        "projectPath": "C:\\Git\\Blume\\BlumeAPI\\BlumeAPI.csproj",
+        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+        "outputPath": "C:\\Git\\Blume\\BlumeAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ar30886127\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -42,6 +42,10 @@
               "target": "Package",
               "version": "[7.0.5, )"
             },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[7.0.4, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -58,6 +62,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.16, 6.0.16]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[6.0.16, 6.0.16]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.16, 6.0.16]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[6.0.16, 6.0.16]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -66,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
