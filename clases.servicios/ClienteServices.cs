@@ -69,7 +69,7 @@ using System.Threading.Tasks;
             string localidad = reader["LOCALIDAD"] as string;
             string telefono = reader["CUIT"] as string;
 
-             int? cfId = reader["ID_CONDICION_FISCAL"] as int?;            
+             int? cfId = reader["ID_CONDICION_AFIP"] as int?;            
             string cfCodigo = reader["CF_CODIGO"] as string;   
             string cfDescripcion = reader["CF_DESCRIPCION"] as string;   
             CondicionFiscal cf = new CondicionFiscal
