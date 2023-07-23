@@ -75,16 +75,18 @@ public class StockController : ControllerBase
     }
 
     [HttpGet("GetById/{id}")]
-    public IEnumerable<Stock> GetById(int id)
+    public Stock GetById(int id)
     {
         try{
-            Stock st = new Stock();
-            st.id = 0;
-            st.cantidad = 22;
-            st.producto = "Tela Pepito";
-            st.baja = false;
+            
+            IEnumerable<Stock> resultado = stList;
 
-            return stList;
+            if (_memoryCache.TryGetValue(stListKey, out stList))
+            {
+                resultado = stList.Where(a => a.id == id);
+            }
+
+            return resultado.First<Stock>();
         }
         catch(Exception ex)
         {
@@ -134,13 +136,41 @@ public class StockController : ControllerBase
     [HttpDelete("DeleteStock/{id}")]
     public async Task<ActionResult<Stock>> DeleteStock(int id)
     {
-        if (_memoryCache.TryGetValue(stListKey, out stList))
-        {
-            stList.Remove(stList[id]);
-            var cacheOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(900));
-            _memoryCache.Set(stListKey, stList, cacheOptions);
+            IEnumerable<Stock> resultado = stList;
+
+            if (_memoryCache.TryGetValue(stListKey, out stList))
+            {
+                resultado = stList.Where(a => a.id == id);
+                stList.Remove(resultado.First<Stock>());
+                var cacheOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(900));
+                _memoryCache.Set(stListKey, stList, cacheOptions);
+            }
+
+            return stList[0];
+    }
+
+    [HttpPost("UpdateStock")]
+    public async Task<ActionResult<Stock>> UpdateStock(Stock stock)
+    {
+        try{
+            
+            IEnumerable<Stock> resultado = stList;
+
+            if (_memoryCache.TryGetValue(stListKey, out stList))
+            {
+                resultado = stList.Where(a => a.id == stock.id);
+                stList.Remove(resultado.First<Stock>());
+                stList.Add(stock);
+                var cacheOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromSeconds(900));
+                _memoryCache.Set(stListKey, stList, cacheOptions);
+            }
+
+            return resultado.First<Stock>();
         }
-        return stList[id];
+        catch(Exception ex)
+        {
+            return null;
+        }
     }
 
 }
