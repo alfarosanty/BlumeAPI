@@ -962,19 +962,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ar30886127\\.nuget\\packages\\": {}
+    "/home/unarix/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\github\\Blume\\BlumeAPI\\BlumeAPI.csproj",
+      "projectUniqueName": "/home/unarix/Documentos/code/BlumeAPI/BlumeAPI.csproj",
       "projectName": "BlumeAPI",
-      "projectPath": "C:\\github\\Blume\\BlumeAPI\\BlumeAPI.csproj",
-      "packagesPath": "C:\\Users\\ar30886127\\.nuget\\packages\\",
-      "outputPath": "C:\\github\\Blume\\BlumeAPI\\obj\\",
+      "projectPath": "/home/unarix/Documentos/code/BlumeAPI/BlumeAPI.csproj",
+      "packagesPath": "/home/unarix/.nuget/packages/",
+      "outputPath": "/home/unarix/Documentos/code/BlumeAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ar30886127\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/unarix/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -1026,6 +1026,20 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.20, 6.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Host.linux-x64",
+            "version": "[6.0.20, 6.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[6.0.20, 6.0.20]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -1034,7 +1048,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.408\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.109/RuntimeIdentifierGraph.json"
       }
     }
   }
