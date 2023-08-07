@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
     public  class RemitoIngreso
     {
-        public static String TABLA="INGRESO_STOCK";
+        public static String TABLA="INGRESO";
 
         public Taller Taller { get; set; }
 
