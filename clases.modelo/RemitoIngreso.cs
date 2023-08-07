@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
         public Taller Taller { get; set; }
 
-        public DateTime fecha { get; set; }
+        public DateTime Fecha { get; set; }
 
         public string Descripcion { get; set; }
 

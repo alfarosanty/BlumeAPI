@@ -24,7 +24,7 @@ using System.Threading.Tasks;
         }
 
 
-        public Basico get(int id){
+        public Basico get(int id,NpgsqlConnection conex){
             string commandText = $"SELECT * FROM \" "+ getTabla()+ "\"WHERE \"ID_"+ Articulo.TABLA + "\" = @id";
             //List<Basico> listar = new List<Basico>();
             using (NpgsqlCommand cmd = new NpgsqlCommand(commandText, conex)){

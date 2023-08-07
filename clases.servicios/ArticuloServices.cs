@@ -6,10 +6,27 @@ using System.Text;
 using System.Threading.Tasks;
 
     class ArticuloServices
-    {    
+    {   
+
+        static string NewMethod()
+        {
+            string selectText = $"SELECT AR.* ,";
+            selectText += "MD.\"CODIGO\" AS MEDIDA_CODIGO, MD.\"DESCRIPCION\" AS MEDIDA_DESCRIPCION, ";
+            selectText += "FM.\"CODIGO\" AS FAMILIA_CODIGO, FM.\"DESCRIPCION\" AS FAMILIA_DESCRIPCION, ";
+            selectText += "CL.\"CODIGO\" AS COLOR_CODIGO, CL.\"DESCRIPCION\" AS COLOR_DESCRIPCION ";
+            return selectText;
+        } 
 
         public Articulo GetArticulo(int id, NpgsqlConnection conex ){
-            string commandText = $"SELECT * FROM \" "+ Articulo.TABLA + "\"WHERE \"ID_"+ Articulo.TABLA + "\" = @id";
+            string commandText = $"SELECT * FROM \""+ Articulo.TABLA + "\" WHERE \"ID_"+ Articulo.TABLA + "\" = @id";
+
+            string selectText = NewMethod();
+            string fromText = "FROM \"ARTICULO\" AR,\"MEDIDA\" MD, \"FAMILIA\" FM, \"COLOR\" CL ";
+            string whereText = "WHERE AR.\"ID_MEDIDA\"= MD.\"ID_MEDIDA\" AND AR.\"ID_FAMILIA\"= FM.\"ID_FAMILIA\" AND";
+            whereText += " AR.\"ID_COLOR\"= CL.\"ID_COLOR\" AND ";
+            whereText += "AR.\"ID_"+ Articulo.TABLA + "\" = @id";
+            commandText = selectText + fromText + whereText;     
+            
                 using (NpgsqlCommand cmd = new NpgsqlCommand(commandText, conex))
                 {
                     Console.WriteLine("Consulta: "+ commandText);
@@ -47,14 +64,7 @@ using System.Threading.Tasks;
         }
         return articulos;
 
-        static string NewMethod()
-        {
-            string selectText = $"SELECT AR.* ,";
-            selectText += "MD.\"CODIGO\" AS MEDIDA_CODIGO, MD.\"DESCRIPCION\" AS MEDIDA_DESCRIPCION, ";
-            selectText += "FM.\"CODIGO\" AS FAMILIA_CODIGO, FM.\"DESCRIPCION\" AS FAMILIA_DESCRIPCION, ";
-            selectText += "CL.\"CODIGO\" AS COLOR_CODIGO, CL.\"DESCRIPCION\" AS COLOR_DESCRIPCION ";
-            return selectText;
-        }
+        
     }
 
 

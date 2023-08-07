@@ -2,7 +2,7 @@
 
 using Npgsql;
 
-public class ColorServices 
+public class ColorServices: BasicoServices 
 {
     public override string getTabla()
     {

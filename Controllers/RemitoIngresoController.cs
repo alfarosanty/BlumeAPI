@@ -26,7 +26,7 @@ public class RemitoIngresoController : ControllerBase
 */
  
     [HttpPost(Name = "CrearRemitoIngreso")]
-    public void Crear(string idTaller, string descripcion, string fecha,IEnumerable<ArticuloCantidad> ri){
+    public void Crear(int idTaller, string descripcion, string fecha,List<ArticuloCantidad> ri){
         CConexion con =  new CConexion();
         Npgsql.NpgsqlConnection npgsqlConnection = con.establecerConexion();
 
@@ -35,21 +35,31 @@ public class RemitoIngresoController : ControllerBase
         //obtener descripcion
         //listar articulos y cantidades
         //
-       // TallerServices tallerServices = new TallerServices();
+        ArticuloServices ats = new ArticuloServices();
+        List<ArticuloIngreso>   aingresos = new List<ArticuloIngreso> ();
+        
+        foreach(ArticuloCantidad art in ri){
+        ArticuloIngreso ai = new ArticuloIngreso();
+        Articulo articulo = new Articulo();
+        articulo.Id = art.IdArticulo;
+         //No hace falta q vaya a la BD
+         //ai.articulo =  ats.GetArticulo(art.IdArticulo, npgsqlConnection);
+         ai.articulo = articulo;
+         ai.cantidad = art.cantidad;
+         aingresos.Add(ai);
+         Console.WriteLine("Data " + art.IdArticulo);
+        }   
+
         RemitoIngreso remitoIngreso = new RemitoIngreso();
       //  string date = DateTime.UtcNow.ToString("MM-dd-yyyy");
-    //    TallerServices ts = new TallerServices();
-    
-     //   TallerServices tallerServices = new TallerServices();
-        // ts = new Tallerservices();
-        //Taller taller = ts.Get("1");
-        //remitoIngreso.taller = taller;
-        //remitoIngreso.fecha = DateTime.UtcNow
-
-
-
-
-
+        //TallerServices ts = new TallerServices().Get(idTaller);          
+        Taller taller  = new Taller();
+        taller.Id = idTaller;
+        remitoIngreso.Taller = taller;
+        remitoIngreso.Fecha = DateTime.UtcNow;
+        remitoIngreso.Articulos = aingresos;
+        remitoIngreso.Descripcion = descripcion;
+        new RemitoIngresoServices().crear(remitoIngreso,npgsqlConnection);
         con.cerrarConexion(npgsqlConnection);
     }
 

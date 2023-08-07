@@ -110,8 +110,7 @@ using System.Threading.Tasks;
         }
 
 
-        public void crear(RemitoIngreso remito){
-
+        public void crear(RemitoIngreso remito, Npgsql.NpgsqlConnection npgsqlConnection){
             //guardar RemitoIngreso
             //Guardar ArticuloIngreso
             //Guardar
