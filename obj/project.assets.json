@@ -962,19 +962,19 @@
     ]
   },
   "packageFolders": {
-    "/home/unarix/.nuget/packages/": {}
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/unarix/Documentos/code/BlumeAPI/BlumeAPI.csproj",
+      "projectUniqueName": "C:\\Git\\Blume\\BlumeAPI\\BlumeAPI.csproj",
       "projectName": "BlumeAPI",
-      "projectPath": "/home/unarix/Documentos/code/BlumeAPI/BlumeAPI.csproj",
-      "packagesPath": "/home/unarix/.nuget/packages/",
-      "outputPath": "/home/unarix/Documentos/code/BlumeAPI/obj/",
+      "projectPath": "C:\\Git\\Blume\\BlumeAPI\\BlumeAPI.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Git\\Blume\\BlumeAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/unarix/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -1029,15 +1029,19 @@
         "downloadDependencies": [
           {
             "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.20, 6.0.20]"
+            "version": "[6.0.16, 6.0.16]"
           },
           {
-            "name": "Microsoft.NETCore.App.Host.linux-x64",
-            "version": "[6.0.20, 6.0.20]"
+            "name": "Microsoft.NETCore.App.Host.win-x64",
+            "version": "[6.0.16, 6.0.16]"
           },
           {
             "name": "Microsoft.NETCore.App.Ref",
-            "version": "[6.0.20, 6.0.20]"
+            "version": "[6.0.16, 6.0.16]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[6.0.16, 6.0.16]"
           }
         ],
         "frameworkReferences": {
@@ -1048,7 +1052,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.109/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }
