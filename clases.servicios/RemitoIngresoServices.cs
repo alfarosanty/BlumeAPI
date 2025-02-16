@@ -7,20 +7,43 @@ using System.Threading.Tasks;
 
     class RemitoIngresoServices
     {    
-        public void  crear(RemitoIngreso remito, Npgsql.NpgsqlConnection npgsqlConnection)
+        public async void  crear(RemitoIngreso remito, Npgsql.NpgsqlConnection npgsqlConnection)
         {
             //guardar RemitoIngreso
-            string sqlInsert = "INSERT INTO " + RemitoIngreso.TABLA + "(FECHA, ID_FABICANTE, DESCRIPCION) VALUES(@FECHA,@FABRICANTE,@DESCRIPCION)";
+            string sqlInsert = "INSERT INTO  \""+ RemitoIngreso.TABLA + "\" (\"FECHA\",\"ID_FABRICANTE\",\"DESCRIPCION\") VALUES(@FECHA,@FABRICANTE,@DESCRIPCION)";
 
             NpgsqlCommand cmd = new NpgsqlCommand(sqlInsert, npgsqlConnection);
-            {
-                cmd.Parameters.AddWithValue("FECHA",remito.Fecha);
-                cmd.Parameters.AddWithValue("FABRICANTE",remito.Taller.Id);
-                cmd.Parameters.AddWithValue("DESCRIPCION",remito.Descripcion);
-                 cmd.ExecuteNonQueryAsync();
-            }
+            
+            //cmd.Parameters.AddWithValue("ID_INGRESO","1");
+            cmd.Parameters.AddWithValue("FECHA",remito.Fecha);
+            cmd.Parameters.AddWithValue("FABRICANTE",remito.Taller.Id);
+            cmd.Parameters.AddWithValue("DESCRIPCION",remito.Descripcion);
+            int nRows  = cmd.ExecuteNonQuery();
+            string sqlSeq = "select currval('\"INGRESO_ID_INGRESO_seq\"')";
+            NpgsqlCommand cmdSeq = new NpgsqlCommand(sqlSeq, npgsqlConnection);
+            Console.WriteLine("Ingreso el  " + RemitoIngreso.TABLA  + " el remito ingreso" + sqlSeq);
+             remito.Id =   Convert.ToInt32(cmdSeq.ExecuteScalar()) ;
+            //
+            
             //Guardar ArticuloIngreso
-            //Guardar
+            //recorrer articulos e irlos guardando
+                   foreach(ArticuloIngreso art in remito.Articulos ){
+                    sqlInsert = "INSERT INTO  \""+ ArticuloIngreso.TABLA + "\" (\"ID_ARTICULO\",\"ID_INGRESO\",\"CANTIDAD\",\"FECHA\") VALUES(@ID_ARTICULO,@ID_INGRESO,@CANTIDAD,@FECHA)";
+                     cmd = new NpgsqlCommand(sqlInsert, npgsqlConnection);
+                    {                        
+                        cmd.Parameters.AddWithValue("ID_INGRESO",remito.Id);
+                        cmd.Parameters.AddWithValue("ID_ARTICULO",art.articulo.Id);
+                        cmd.Parameters.AddWithValue("CANTIDAD",art.cantidad);
+                        cmd.Parameters.AddWithValue("FECHA",remito.Fecha);
+                         cmd.ExecuteNonQuery();
+                        Console.WriteLine("Ingreso el  " + ArticuloIngreso.TABLA +   " el aritculo" + art.articulo.Id);
+                    }
+            
+
+
+
+            }
+            
         }
 
         public void modificar(RemitoIngreso remito){

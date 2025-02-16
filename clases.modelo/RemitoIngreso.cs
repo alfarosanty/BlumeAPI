@@ -18,6 +18,8 @@ using System.Threading.Tasks;
 
         public List<ArticuloIngreso> Articulos { get; set; }
 
+        public int Id { get; set; }
+
     
     }
 
