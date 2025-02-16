@@ -44,7 +44,7 @@ public class RemitoIngresoController : ControllerBase
         articulo.Id = art.IdArticulo;
          //No hace falta q vaya a la BD
          //ai.articulo =  ats.GetArticulo(art.IdArticulo, npgsqlConnection);
-         ai.articulo = articulo;
+         ai.Articulo = articulo;
          ai.cantidad = art.cantidad;
          aingresos.Add(ai);
          Console.WriteLine("Data " + art.IdArticulo);

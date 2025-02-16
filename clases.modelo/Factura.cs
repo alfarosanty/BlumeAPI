@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-    public class Presupuesto
+    public class Factura
     {
-    public static String TABLA="PRESUPUESTO";
+    public static String TABLA="FACTURA";
     public int Id { get; set; }
 
     public DateTime Fecha { get; set; }
@@ -16,12 +16,8 @@ using System.Threading.Tasks;
 
     public bool EximirIVA { get; set; }
 
-    public EstadoPresupuesto EstadoPresupuesto{ get; set; }
-
-    public Factura factura{ get; set; }
-
-     
-    public List<ArticuloPresupuesto> Articulos  { get; set; }
+    public List<ArticuloFactura> Articulos  { get; set; }
+   
     
     public string RazonSocial{ get; set; }
     public string Contacto{ get; set; }

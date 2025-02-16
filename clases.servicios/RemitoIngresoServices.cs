@@ -32,12 +32,13 @@ using System.Threading.Tasks;
                      cmd = new NpgsqlCommand(sqlInsert, npgsqlConnection);
                     {                        
                         cmd.Parameters.AddWithValue("ID_INGRESO",remito.Id);
-                        cmd.Parameters.AddWithValue("ID_ARTICULO",art.articulo.Id);
+                        cmd.Parameters.AddWithValue("ID_ARTICULO",art.Articulo.Id);
                         cmd.Parameters.AddWithValue("CANTIDAD",art.cantidad);
                         cmd.Parameters.AddWithValue("FECHA",remito.Fecha);
                          cmd.ExecuteNonQuery();
-                        Console.WriteLine("Ingreso el  " + ArticuloIngreso.TABLA +   " el aritculo" + art.articulo.Id);
+                        Console.WriteLine("Ingreso el  " + ArticuloIngreso.TABLA +   " el aritculo" + art.Articulo.Id);
                     }
+                    //ACTUALIZAR EL STOCK DE ESE ARTICULO
             
 
 
@@ -47,12 +48,16 @@ using System.Threading.Tasks;
         }
 
         public void modificar(RemitoIngreso remito){
-            
-
-
             //Actualizar RemitoIngreso
             //Actualziar ArticuloIngreso
             //Guardar
+        }
+
+
+        public RemitoIngreso buscar(Taller taller, DateTime dateTime, Articulo articulo){
+
+
+            return null;
         }
 
 

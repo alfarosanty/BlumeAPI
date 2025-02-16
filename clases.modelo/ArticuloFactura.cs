@@ -6,16 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 
- public class ArticuloIngreso
+ public class ArticuloFactura
         {
-            public static String TABLA="ARTICULO_INGRESO";
+            public static String TABLA="ARTICULO_FACTURA";
 
             public Articulo Articulo { get; set; }
 
-            public RemitoIngreso RemitoIngreso { get; set; }
+            public Factura Factura { get; set; }
 
             public int cantidad { get; set; }
 
-            public PedidoProduccionArticulo PedidoProduccionArticulo  { get; set; }         
+            public decimal PrecioUnitario { get; set; }
 
     }
